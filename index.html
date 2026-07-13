@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Alisha ✨</title>
+
+    <!-- Instagram Link Preview Fix -->
+    <meta property="og:title" content="For Alisha ✨" />
+    <meta property="og:description" content="A special birthday surprise just for you! Click to open your gift. 🎉🎂" />
+    <meta property="og:image" content="photo4.png" />
+    <meta property="og:type" content="website" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #ffe6f2;
+            font-family: 'Arial Rounded MT Bold', 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: #333;
+        }
+        #app-container {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+        .screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .active {
+            display: flex;
+        }
+        .number-display {
+            font-size: 6rem;
+            font-weight: bold;
+            color: #ff4d94;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        }
+        .text-display {
+            font-size: 2rem;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .birthday-image {
+            width: 85%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(255, 77, 148, 0.3);
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .btn-style {
+            background-color: #ff4d94;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background-color 0.2s;
+            margin-top: 10px;
+        }
+        .btn-style:hover {
+            transform: scale(1.05);
+            background-color: #ff1a75;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app-container">
+
+    <!-- Welcome / Start Screen -->
+    <div id="screen-welcome" class="screen active">
+        <div class="text-display">Birthday Surprise is Ready! 🎉</div>
+        <button class="btn-style" onclick="changeScreen('screen-welcome', 'screen-seq1')">Click to Begin</button>
+    </div>
+
+    <!-- Sequence 1: 3 - Hi Lazy Perfectionist -->
+    <div id="screen-seq1" class="screen">
+        <div class="number-display">3</div>
+        <div class="text-display">Hi lazy perfectionist</div>
+        <img src="photo1.png" alt="Lazy Perfectionist" class="birthday-image">
+        <button class="btn-style" onclick="changeScreen('screen-seq1', 'screen-seq2')">Next ➡️</button>
+    </div>
+
+    <!-- Sequence 2: 2 - Strong Feminine -->
+    <div id="screen-seq2" class="screen">
+        <div class="number-display">2</div>
+        <div class="text-display">Strong feminine</div>
+        <img src="photo2.jpg" alt="Strong Feminine" class="birthday-image">
+        <button class="btn-style" onclick="changeScreen('screen-seq2', 'screen-seq3')">Next ➡️</button>
+    </div>
+
+    <!-- Sequence 3: 1 - Mere BSC Wale Senior -->
+    <div id="screen-seq3" class="screen">
+        <div class="number-display">1</div>
+        <div class="text-display">Mere bsc wale senior</div>
+        <img src="photo3.png" alt="Mere BSC wale senior" class="birthday-image">
+        <button class="btn-style" onclick="changeScreen('screen-seq3', 'screen-candle-request')">Next ➡️</button>
+    </div>
+
+    <!-- Sequence 4: Blow Candle Request -->
+    <div id="screen-candle-request" class="screen">
+        <div class="text-display" style="font-size: 2.2rem; color: #ff1a75;">Time for you to blow the candle! 🎂</div>
+        <img src="photo4.png" alt="Blow Candle" class="birthday-image">
+        <button class="btn-style" onclick="startFastCountdown()">Blow Candle 🌬️</button>
+    </div>
+
+    <!-- Sequence 5: Fast Countdown -->
+    <div id="screen-fast-countdown" class="screen">
+        <div id="fast-counter" class="number-display" style="font-size: 8rem;">3</div>
+        <div class="text-display">Blowing out the candle...</div>
+    </div>
+
+    <!-- Final Screen: Happy Birthday Alisha -->
+    <div id="screen-final" class="screen">
+        <div class="text-display" style="font-size: 3rem; color: #ff1a75; animation: fadeIn 1s infinite alternate;">✨ Happy Birthday Alisha! ✨</div>
+        <img src="photo4.png" alt="Happy Birthday Alisha" class="birthday-image">
+    </div>
+
+</div>
+
+<script>
+    function startFastCountdown() {
+        changeScreen('screen-candle-request', 'screen-fast-countdown');
+        const counterEl = document.getElementById('fast-counter');
+        
+        setTimeout(() => { counterEl.innerText = "2"; }, 800);
+        setTimeout(() => { counterEl.innerText = "1"; }, 1600);
+        
+        setTimeout(() => {
+            changeScreen('screen-fast-countdown', 'screen-final');
+        }, 2400);
+    }
+
+    function changeScreen(hideId, showId) {
+        document.getElementById(hideId).classList.remove('active');
+        document.getElementById(showId).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
+
